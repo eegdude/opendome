@@ -1,2 +1,12 @@
-# opendome
-3d-printable probes for tactile acuity testing with grating orientation test, somewhat like JVP domes
+# Opendome
+* 3d-printable probes for tactile acuity testing using 
+grating orientation test, somewhat like JVP domes
+* desinged with [OpenScad](https://www.openscad.org/), so should be easily customisable
+
+## TODO
+* Assess manufacturability
+* Tips for selectng material:
+    * Biocompatible
+    * Hypoallergenic
+    * Durable (washable/disinfectable)
+    * Cheap
