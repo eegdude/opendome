@@ -1,4 +1,5 @@
 $fn = 100;
+cap_type = "dome"; //"flat"
 
 leg_height = 40;
 leg_diameter = 10;
@@ -17,7 +18,7 @@ grove_widths = [3.0, 2.0, 1.5, 1.25, 1.0, 0.75, 0.5, 0.35];
 printer_center_y = 50;
 printer_center_x = 50;
 
-module dome(){
+module domed_cap(){
     translate([0, 0, -2*(sphere_radius) + sphere_sector_height]){
         difference(){
             translate([0,0,sphere_radius]){
@@ -27,11 +28,11 @@ module dome(){
         }
     }
 }
-module flat_dome(){
+module flat_cap(){
     cylinder(d=base_diameter, h=sphere_sector_height);
 }
 
-module dome_base(){
+module cap_base(){
     translate([0,0, leg_height,]){
         cylinder(h=base_height, d=base_diameter);
     }
@@ -77,12 +78,16 @@ module opendome(grove_width){
         label(grove_width);
     }
     hexagon();
-    dome_base();
+    cap_base();
 
     difference(){
         translate([0, 0, leg_height + base_height]){
-            //dome();
-            flat_dome();
+            if (cap_type=="dome"){
+                domed_cap();
+            }
+            else if (cap_type=="flat"){
+                flat_cap();
+            }
         }
         groves(grove_width=grove_width);
     }
